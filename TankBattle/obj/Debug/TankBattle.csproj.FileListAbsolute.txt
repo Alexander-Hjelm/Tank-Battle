@@ -15,3 +15,4 @@ c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\bin\
 c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\obj\Debug\TankBattle.csprojResolveAssemblyReference.cache
 c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\obj\Debug\TankBattle.exe
 c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\obj\Debug\TankBattle.pdb
+c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\bin\DesktopGL\AnyCPU\Debug\Content\Graphics\tank.xnb

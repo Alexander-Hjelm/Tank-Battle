@@ -11,7 +11,10 @@ namespace TankBattle
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
+
+        Tank tank1;
+        Tank tank2;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -28,6 +31,9 @@ namespace TankBattle
         {
             // TODO: Add your initialization logic here
 
+            tank1 = new Tank();
+            tank2 = new Tank();
+
             base.Initialize();
         }
 
@@ -41,6 +47,16 @@ namespace TankBattle
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Texture2D tankTexture2D = Content.Load<Texture2D>("Graphics\\tank");
+
+            Vector2 origin = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y);
+            Vector2 max = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.Width, GraphicsDevice.Viewport.TitleSafeArea.Height);
+
+            Vector2 tank1Position = new Vector2(origin.X + 50, origin.Y + 50);
+            Vector2 tank2Position = new Vector2(max.X - tankTexture2D.Width - 50, max.Y - tankTexture2D.Height - 50);
+
+            tank1.Initialize(tankTexture2D, tank1Position, 0f);
+            tank2.Initialize(tankTexture2D, tank2Position, 0f);
         }
 
         /// <summary>
@@ -76,6 +92,13 @@ namespace TankBattle
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();    //Begin drawing
+
+            tank1.Draw(spriteBatch);
+            tank2.Draw(spriteBatch);
+            
+            spriteBatch.End();  //End drawing
+
 
             base.Draw(gameTime);
         }
