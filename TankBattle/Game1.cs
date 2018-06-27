@@ -52,11 +52,11 @@ namespace TankBattle
             Vector2 origin = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y);
             Vector2 max = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.Width, GraphicsDevice.Viewport.TitleSafeArea.Height);
 
-            Vector2 tank1Position = new Vector2(origin.X + 50, origin.Y + 50);
-            Vector2 tank2Position = new Vector2(max.X - tankTexture2D.Width - 50, max.Y - tankTexture2D.Height - 50);
+            Vector2 tank1Position = new Vector2(origin.X + tankTexture2D.Width/2 + 50, origin.Y + tankTexture2D.Height/2 + 50);
+            Vector2 tank2Position = new Vector2(max.X - tankTexture2D.Width/2 - 50, max.Y - tankTexture2D.Height/2 - 50);
 
             tank1.Initialize(tankTexture2D, tank1Position, 0f);
-            tank2.Initialize(tankTexture2D, tank2Position, 0f);
+            tank2.Initialize(tankTexture2D, tank2Position, MathHelper.Pi);
         }
 
         /// <summary>

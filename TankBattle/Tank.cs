@@ -35,7 +35,7 @@ namespace TankBattle
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(PlayerTexture, Position, null, Color.White, Rotation, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(PlayerTexture, Position, null, Color.White, Rotation, new Vector2(Width/2, Height/2), 1f, SpriteEffects.None, 0f);
         }
 
 
