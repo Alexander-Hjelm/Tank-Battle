@@ -16,3 +16,4 @@ c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\obj\
 c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\obj\Debug\TankBattle.exe
 c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\obj\Debug\TankBattle.pdb
 c:\users\gr00v3\documents\visual studio 2015\Projects\TankBattle\TankBattle\bin\DesktopGL\AnyCPU\Debug\Content\Graphics\tank.xnb
+C:\Users\Gr00v3\Documents\Visual Studio 2015\Projects\TankBattle\TankBattle\bin\DesktopGL\AnyCPU\Debug\Content\Graphics\bullet.xnb

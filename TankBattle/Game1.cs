@@ -51,6 +51,7 @@ namespace TankBattle
 
             // TODO: use this.Content to load your game content here
             Texture2D tankTexture2D = Content.Load<Texture2D>("Graphics\\tank");
+            Texture2D bulletTexture2D = Content.Load<Texture2D>("Graphics\\bullet");
 
             Vector2 origin = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y);
             Vector2 max = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.Width, GraphicsDevice.Viewport.TitleSafeArea.Height);
@@ -58,8 +59,8 @@ namespace TankBattle
             Vector2 tank1Position = new Vector2(origin.X + tankTexture2D.Width/2 + 50, origin.Y + tankTexture2D.Height/2 + 50);
             Vector2 tank2Position = new Vector2(max.X - tankTexture2D.Width/2 - 50, max.Y - tankTexture2D.Height/2 - 50);
 
-            tank1.Initialize(tankTexture2D, tank1Position, 0f);
-            tank2.Initialize(tankTexture2D, tank2Position, MathHelper.Pi);
+            tank1.Initialize(tankTexture2D, bulletTexture2D, GraphicsDevice.Viewport, tank1Position, 0f);
+            tank2.Initialize(tankTexture2D, bulletTexture2D, GraphicsDevice.Viewport, tank2Position, MathHelper.Pi);
         }
 
         /// <summary>
@@ -114,6 +115,11 @@ namespace TankBattle
                 tank2.Turn(-1f);
             }
 
+            if (currentKeyboardState.IsKeyDown(Keys.RightControl))
+            {
+                tank2.Shoot();
+            }
+
             if (currentKeyboardState.IsKeyDown(Keys.W))
             {
                 tank1.Move(1f);
@@ -132,6 +138,11 @@ namespace TankBattle
             if (currentKeyboardState.IsKeyDown(Keys.A))
             {
                 tank1.Turn(-1f);
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.Space))
+            {
+                tank1.Shoot();
             }
 
             previousKeyboardState = currentKeyboardState;
