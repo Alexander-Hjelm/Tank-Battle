@@ -84,6 +84,9 @@ namespace TankBattle
             // TODO: Add your update logic here
             HandleInput();
 
+            tank1.Update();
+            tank2.Update();
+
             base.Update(gameTime);
         }
 

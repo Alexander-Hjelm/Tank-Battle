@@ -9,8 +9,14 @@ namespace TankBattle
         public Texture2D PlayerTexture;
         public Vector2 Position;
         public float Rotation;
-        private float Speed = 5f;
-        private float RotSpeed = 0.06f;
+        private float MaxSpeed = 5f;
+        private float MaxRotSpeed = 0.06f;
+        private float Speed = 0f;
+        private float RotSpeed = 0f;
+        private float SpeedIncr = 0.04f;
+        private float RotSpeedIncr = 0.002f;
+        private float SpeedDecr = 0.02f;
+        private float RotSpeedDecr = 0.0015f;
         public bool Active;
         public int Hp;
         public int Width
@@ -32,17 +38,35 @@ namespace TankBattle
 
         public void Update()
         {
+            Position += GetFwdVector() * Speed;
+            Rotation += RotSpeed;
 
+            Speed -= Math.Sign(Speed) * SpeedDecr;
+            RotSpeed -= Math.Sign(RotSpeed) * RotSpeedDecr;
         }
 
         public void Move(float offset)
         {
-            Position += GetFwdVector() * offset * Speed;
+            if (offset > 0 && Speed < MaxSpeed)
+            {
+                Speed += SpeedIncr;
+            }
+            else if (offset < 0 && Speed > -MaxSpeed)
+            {
+                Speed -= SpeedIncr;
+            }
         }
 
         public void Turn(float offset)
         {
-            Rotation += offset * RotSpeed;
+            if (offset < 0 && RotSpeed > -MaxRotSpeed)
+            {
+                RotSpeed -= RotSpeedIncr;
+            }
+            else if (offset > 0 && RotSpeed < MaxRotSpeed)
+            {
+                RotSpeed += RotSpeedIncr;
+            }
         }
 
         private Vector2 GetFwdVector()
