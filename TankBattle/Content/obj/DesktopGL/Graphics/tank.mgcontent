@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>c:/users/gr00v3/documents/visual studio 2015/Projects/TankBattle/TankBattle/Content/Graphics/tank.png</SourceFile>
+  <SourceFile>C:/Users/Gr00v3/Documents/Visual Studio 2015/Projects/TankBattle/TankBattle/Content/Graphics/tank.png</SourceFile>
   <SourceTime>2017-02-27T11:30:21.7342879+01:00</SourceTime>
-  <DestFile>c:/users/gr00v3/documents/visual studio 2015/Projects/TankBattle/TankBattle/Content/bin/DesktopGL/Graphics/tank.xnb</DestFile>
-  <DestTime>2018-06-27T20:10:40.1231252+02:00</DestTime>
+  <DestFile>C:/Users/Gr00v3/Documents/Visual Studio 2015/Projects/TankBattle/TankBattle/Content/bin/DesktopGL/Graphics/tank.xnb</DestFile>
+  <DestTime>2018-06-28T10:52:22.779451+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

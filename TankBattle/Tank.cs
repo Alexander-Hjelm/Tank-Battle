@@ -9,6 +9,8 @@ namespace TankBattle
         public Texture2D PlayerTexture;
         public Vector2 Position;
         public float Rotation;
+        private float Speed = 5f;
+        private float RotSpeed = 0.06f;
         public bool Active;
         public int Hp;
         public int Width
@@ -31,6 +33,22 @@ namespace TankBattle
         public void Update()
         {
 
+        }
+
+        public void Move(float offset)
+        {
+            Position += GetFwdVector() * offset * Speed;
+        }
+
+        public void Turn(float offset)
+        {
+            Rotation += offset * RotSpeed;
+        }
+
+        private Vector2 GetFwdVector()
+        {
+            double r = (double)Rotation;
+            return new Vector2(-(float)Math.Sin(r), (float)Math.Cos(r));
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -12,6 +12,9 @@ namespace TankBattle
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        KeyboardState currentKeyboardState;
+        KeyboardState previousKeyboardState;
+
         Tank tank1;
         Tank tank2;
 
@@ -79,8 +82,56 @@ namespace TankBattle
                 Exit();
 
             // TODO: Add your update logic here
+            HandleInput();
 
             base.Update(gameTime);
+        }
+
+        public void HandleInput()
+        {
+            currentKeyboardState = Keyboard.GetState();
+
+            if (currentKeyboardState.IsKeyDown(Keys.Up))
+            {
+                tank2.Move(1f);
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.Down))
+            {
+                tank2.Move(-1f);
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.Right))
+            {
+                tank2.Turn(1f);
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.Left))
+            {
+                tank2.Turn(-1f);
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.W))
+            {
+                tank1.Move(1f);
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.S))
+            {
+                tank1.Move(-1f);
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.D))
+            {
+                tank1.Turn(1f);
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.A))
+            {
+                tank1.Turn(-1f);
+            }
+
+            previousKeyboardState = currentKeyboardState;
         }
 
         /// <summary>
