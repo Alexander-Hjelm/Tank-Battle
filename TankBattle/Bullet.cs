@@ -32,11 +32,14 @@ namespace TankBattle
 
         public void Update()
         {
+            //Move forwards
             Position += GetFwdVector() * Speed;
             
+            //Find corner points of the sprite
             Vector2 origin = new Vector2(viewport.TitleSafeArea.X, viewport.TitleSafeArea.Y);
             Vector2 max = new Vector2(viewport.TitleSafeArea.Width, viewport.TitleSafeArea.Height);
 
+            //Disable the bullet if it is outside screen limits
             if (Position.X < origin.X || Position.X > max.X || Position.Y < origin.Y || Position.Y > max.Y)
             {
                 Active = false;

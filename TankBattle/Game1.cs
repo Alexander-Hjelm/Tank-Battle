@@ -50,15 +50,20 @@ namespace TankBattle
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
+            //Load textures
             Texture2D tankTexture2D = Content.Load<Texture2D>("Graphics\\tank");
             Texture2D bulletTexture2D = Content.Load<Texture2D>("Graphics\\bullet");
 
+            //Find corner points of the window
             Vector2 origin = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y);
             Vector2 max = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.Width, GraphicsDevice.Viewport.TitleSafeArea.Height);
 
+            //Tank start positions
             Vector2 tank1Position = new Vector2(origin.X + tankTexture2D.Width/2 + 50, origin.Y + tankTexture2D.Height/2 + 50);
             Vector2 tank2Position = new Vector2(max.X - tankTexture2D.Width/2 - 50, max.Y - tankTexture2D.Height/2 - 50);
 
+            //initialize tanks
             tank1.Initialize(tankTexture2D, bulletTexture2D, GraphicsDevice.Viewport, tank1Position, 0f);
             tank2.Initialize(tankTexture2D, bulletTexture2D, GraphicsDevice.Viewport, tank2Position, MathHelper.Pi);
         }
@@ -83,8 +88,11 @@ namespace TankBattle
                 Exit();
 
             // TODO: Add your update logic here
+
+            //Keyboard input
             HandleInput();
 
+            //Update cycles
             tank1.Update();
             tank2.Update();
 
@@ -93,7 +101,11 @@ namespace TankBattle
 
         public void HandleInput()
         {
+            //Handle keyboard input for both players
+
             currentKeyboardState = Keyboard.GetState();
+
+            //TANK 2
 
             if (currentKeyboardState.IsKeyDown(Keys.Up))
             {
@@ -119,6 +131,8 @@ namespace TankBattle
             {
                 tank2.Shoot();
             }
+
+            //TANK 1
 
             if (currentKeyboardState.IsKeyDown(Keys.W))
             {
@@ -159,6 +173,7 @@ namespace TankBattle
             // TODO: Add your drawing code here
             spriteBatch.Begin();    //Begin drawing
 
+            //Draw tanks
             tank1.Draw(spriteBatch);
             tank2.Draw(spriteBatch);
             

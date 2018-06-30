@@ -11,15 +11,15 @@ namespace TankBattle
         public Vector2 Position;
         private Viewport viewport;
         public float Rotation;
-        private Bullet bullet;
+        private Bullet bullet;  // NOTE: it was a horrible idea to keep the bullet reference on the tank. Better have it in Game1
         private float MaxSpeed = 5f;
         private float MaxRotSpeed = 0.06f;
         private float Speed = 0f;
         private float RotSpeed = 0f;
-        private float SpeedIncr = 0.04f;
-        private float RotSpeedIncr = 0.002f;
-        private float SpeedDecr = 0.02f;
-        private float RotSpeedDecr = 0.0015f;
+        private float SpeedIncr = 0.04f;    //Acceleration
+        private float RotSpeedIncr = 0.002f;    //Acceleration
+        private float SpeedDecr = 0.02f;    //Decceleration
+        private float RotSpeedDecr = 0.0015f;    //Decceleration
         public bool Active;
         public int Hp;
         public int Width
@@ -39,49 +39,56 @@ namespace TankBattle
             this.BulletTexture = bulletTexture;
             this.viewport = viewport;
             Hp = 3;
-            bullet = new Bullet();
+            bullet = new Bullet(); //Again, bad idea
         }
 
         public void Update()
         {
+            //Update position and rotation
             Position += GetFwdVector() * Speed;
             Rotation += RotSpeed;
 
+            //Apply some constant decceleration to both movement and rotation
             Speed -= Math.Sign(Speed) * SpeedDecr;
             RotSpeed -= Math.Sign(RotSpeed) * RotSpeedDecr;
 
+            //Bullet update cycle
             if (bullet.Active)
             {
                 bullet.Update();
             }
         }
 
+        //Movement forwards, backwards
         public void Move(float offset)
         {
             if (offset > 0 && Speed < MaxSpeed)
             {
-                Speed += SpeedIncr;
+                Speed += SpeedIncr; //Acceleration
             }
             else if (offset < 0 && Speed > -MaxSpeed)
             {
-                Speed -= SpeedIncr;
+                Speed -= SpeedIncr; //Decceleration
             }
         }
 
+        //Turning left, right
         public void Turn(float offset)
         {
             if (offset < 0 && RotSpeed > -MaxRotSpeed)
             {
-                RotSpeed -= RotSpeedIncr;
+                RotSpeed -= RotSpeedIncr; //Acceleration
             }
             else if (offset > 0 && RotSpeed < MaxRotSpeed)
             {
-                RotSpeed += RotSpeedIncr;
+                RotSpeed += RotSpeedIncr; //Decceleration
             }
         }
 
+        //Shooting
         public void Shoot()
         {
+            //If the bullet is not already active, initialize it
             if (!bullet.Active)
             {
                 bullet.Initialize(BulletTexture, viewport, Position, Rotation);
@@ -98,6 +105,7 @@ namespace TankBattle
         {
             spriteBatch.Draw(PlayerTexture, Position, null, Color.White, Rotation, new Vector2(Width/2, Height/2), 1f, SpriteEffects.None, 0f);
 
+            // Bullet drawcall
             if (bullet.Active)
             {
                 bullet.Draw(spriteBatch);
